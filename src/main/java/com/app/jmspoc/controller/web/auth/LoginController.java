@@ -1,4 +1,4 @@
-package com.app.jmspoc.web.auth;
+package com.app.jmspoc.controller.web.auth;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

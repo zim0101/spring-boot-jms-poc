@@ -1,7 +1,7 @@
-package com.app.jmspoc.web.auth;
+package com.app.jmspoc.controller.web.auth;
 
 import com.app.jmspoc.model.Account;
-import com.app.jmspoc.service.AccountService;
+import com.app.jmspoc.service.business.AccountService;
 import jakarta.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;

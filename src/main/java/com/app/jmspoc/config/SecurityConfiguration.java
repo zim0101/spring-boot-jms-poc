@@ -34,7 +34,7 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests((authorize) ->
                         authorize
-                                .requestMatchers("/images/**", "/", "/register/**", "/oauth/**").permitAll()
+                                .requestMatchers("/", "/register/**", "/login/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(
@@ -55,6 +55,7 @@ public class SecurityConfiguration {
                         .csrfTokenRequestHandler(new XorCsrfTokenRequestAttributeHandler())
                 )
         ;
+
         return http.build();
     }
 

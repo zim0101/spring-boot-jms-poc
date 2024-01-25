@@ -22,11 +22,6 @@ public class AccountService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Account findById(Integer id) {
-        return accountRepository.findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Account not found!"));
-    }
-
     public Account findByEmail(String email) {
         return accountRepository.findByEmail(email);
     }
