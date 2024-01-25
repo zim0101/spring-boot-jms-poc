@@ -1,4 +1,4 @@
-package com.app.jmspoc.service;
+package com.app.jmspoc.service.email;
 
 import com.app.jmspoc.dto.EmailDto;
 import jakarta.mail.MessagingException;

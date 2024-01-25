@@ -1,16 +1,7 @@
 package com.app.jmspoc.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class EmailDto {
     private String mailFrom;
 
@@ -29,4 +20,76 @@ public class EmailDto {
     private String contentType;
 
     private List<Object> attachments;
+
+    public String getMailFrom() {
+        return mailFrom;
+    }
+
+    public void setMailFrom(String mailFrom) {
+        this.mailFrom = mailFrom;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getMailTo() {
+        return mailTo;
+    }
+
+    public void setMailTo(String mailTo) {
+        this.mailTo = mailTo;
+    }
+
+    public List<String> getMailCc() {
+        return mailCc;
+    }
+
+    public void setMailCc(List<String> mailCc) {
+        this.mailCc = mailCc;
+    }
+
+    public List<String> getMailBcc() {
+        return mailBcc;
+    }
+
+    public void setMailBcc(List<String> mailBcc) {
+        this.mailBcc = mailBcc;
+    }
+
+    public String getMailSubject() {
+        return mailSubject;
+    }
+
+    public void setMailSubject(String mailSubject) {
+        this.mailSubject = mailSubject;
+    }
+
+    public String getMailContent() {
+        return mailContent;
+    }
+
+    public void setMailContent(String mailContent) {
+        this.mailContent = mailContent;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public List<Object> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Object> attachments) {
+        this.attachments = attachments;
+    }
 }
