@@ -1,4 +1,4 @@
-package com.app.jmspoc.web.dashboard;
+package com.app.jmspoc.controller.web.dashboard;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

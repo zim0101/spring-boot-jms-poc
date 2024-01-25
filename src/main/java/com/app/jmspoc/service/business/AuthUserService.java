@@ -1,4 +1,4 @@
-package com.app.jmspoc.service;
+package com.app.jmspoc.service.business;
 
 import com.app.jmspoc.model.Account;
 import com.app.jmspoc.repository.AccountRepository;

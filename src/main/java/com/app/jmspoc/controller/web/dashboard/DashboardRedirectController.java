@@ -1,6 +1,6 @@
-package com.app.jmspoc.web.dashboard;
+package com.app.jmspoc.controller.web.dashboard;
 
-import com.app.jmspoc.service.AuthUserService;
+import com.app.jmspoc.service.business.AuthUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
