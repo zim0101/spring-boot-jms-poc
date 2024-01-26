@@ -1,4 +1,4 @@
-package com.app.jmspoc.service.jms.publisher;
+package com.app.jmspoc.service.activemq.publisher;
 
 import com.app.jmspoc.model.Product;
 import org.springframework.beans.factory.annotation.Value;

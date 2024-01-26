@@ -11,14 +11,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 public class Account implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_generator")
+    @SequenceGenerator(name = "account_generator", sequenceName = "account_seq")
+    private Integer id;
 
     @NotNull
     @Size(max = 100)
@@ -60,7 +60,8 @@ public class Account implements Serializable {
     @UpdateTimestamp
     private Date updatedAt;
 
-    public Account(UUID id, String username, String firstName, String lastName, String fullName, String email, String password, Set<Role> roles, Boolean disabled, Boolean deleted, Date createdAt, Date updatedAt) {
+    public Account(Integer id, String username, String firstName, String lastName, String fullName, String email,
+                   String password, Set<Role> roles, Boolean disabled, Boolean deleted, Date createdAt, Date updatedAt) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -82,11 +83,11 @@ public class Account implements Serializable {
         return getFirstName() + " " + getLastName();
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

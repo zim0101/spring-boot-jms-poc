@@ -1,4 +1,4 @@
-package com.app.jmspoc.service.jms.subscriber;
+package com.app.jmspoc.service.activemq.subscriber;
 
 import com.app.jmspoc.model.Product;
 import org.slf4j.Logger;

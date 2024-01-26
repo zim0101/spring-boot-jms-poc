@@ -1,22 +1,24 @@
 package com.app.jmspoc;
 
-import com.app.jmspoc.model.Product;
-import com.app.jmspoc.repository.ProductRepository;
-import com.app.jmspoc.service.jms.publisher.SalesReportGenerationPublisher;
+import com.app.jmspoc.model.Account;
+import com.app.jmspoc.model.enums.Role;
+import com.app.jmspoc.repository.AccountRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jms.annotation.EnableJms;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.Set;
 
 @SpringBootApplication
-public class JmsPOCApplication implements CommandLineRunner {
+public class JmsPOCApplication implements CommandLineRunner{
 
-	private final SalesReportGenerationPublisher salesReportGenerationPublisher;
-	private final ProductRepository productRepository;
+	private final AccountRepository accountRepository;
+	private final PasswordEncoder passwordEncoder;
 
-    public JmsPOCApplication(SalesReportGenerationPublisher salesReportGenerationPublisher, ProductRepository productRepository) {
-        this.salesReportGenerationPublisher = salesReportGenerationPublisher;
-        this.productRepository = productRepository;
+    public JmsPOCApplication(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+        this.accountRepository = accountRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public static void main(String[] args) {
@@ -25,10 +27,14 @@ public class JmsPOCApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Product product = new Product();
-		product.setName("ABC");
-		product.setPrice("10");
-		productRepository.save(product);
-		salesReportGenerationPublisher.publishMessage(product);
+		// Create Admin User for the demo
+		Account account = new Account();
+		account.setFirstName("Mr.");
+		account.setLastName("Admin");
+		account.setUsername("admin1");
+		account.setEmail("admin1@gmail.com");
+		account.setPassword(passwordEncoder.encode("admin1"));
+		account.setRoles(Set.of(Role.ADMIN));
+		accountRepository.save(account);
 	}
 }
