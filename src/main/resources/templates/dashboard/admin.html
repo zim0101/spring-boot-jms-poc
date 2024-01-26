@@ -2,9 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Image with Description Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: sans-serif;
+            background: #344e81 linear-gradient(to right, #001e3d, #000000);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between; /* Images on left, card on right */
+            align-items: center;
+            height: 100vh;
+            margin: 0 50px;
+        }
+
+        .image-container {
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 10px 10px 20px 5px rgb(0, 0, 0); /* Subtle shadow */
+            border-radius: 25px; /* Slight rounded corners */
+        }
+
+        .image {
+            max-width: 90%;
+            max-height: 100%;
+            padding: 20px 20px 20px 20px;
+            margin: 20px 20px 20px 20px;
+        }
+
+        .card {
+            background: #031523;
+            width: 30%;
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 20px 20px 20px 20px rgb(0, 0, 0); /* Subtle shadow */
+            display: flex; /* Make card a flex container */
+            flex-direction: column; /* Arrange elements vertically */
+            justify-content: space-between; /* Place button at bottom */
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .button {
+            padding: 22px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            background: #344e81 linear-gradient(to right, #001e3d, #000000);
+            color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+        }
+    </style>
 </head>
 <body>
-    <h2>Admin Dashboard</h2>
+<div class="container">
+    <div class="image-container">
+        <img class="image" th:src="@{/images/system_design.png}" alt="Image of [topic]" />
+    </div>
+    <div class="card">
+        <h2 class="card-title">Workflow</h2>
+        <ul>
+            <li>The user requests a report.</li>
+            <li>The GenerateSalesReportController receives the request and sends it to the Report Generation Service.</li>
+            <li>The Report Generation Service retrieves data from the database.</li>
+            <li>The Report Generation Service formats the data into a report.</li>
+            <li>The Report Generation Service sends the report to the appropriate subscriber.</li>
+            <li>The subscriber delivers the report to the user.</li>
+        </ul>
+        <button class="button">Click To Generate</button>
+
+    </div>
+</div>
 </body>
 </html>
