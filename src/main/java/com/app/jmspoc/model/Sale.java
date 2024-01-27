@@ -25,19 +25,14 @@ public class Sale implements Serializable {
     @NotBlank
     private String price;
 
-    @CreationTimestamp
     private Date createdAt;
 
-    @UpdateTimestamp
-    private Date updatedAt;
-
-    public Sale(Integer id, Product product, Integer quantity, String price, Date createdAt, Date updatedAt) {
+    public Sale(Integer id, Product product, Integer quantity, String price, Date createdAt) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
         this.price = price;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Sale() {}
@@ -80,13 +75,5 @@ public class Sale implements Serializable {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }
