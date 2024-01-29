@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -28,6 +29,10 @@ public class AccountService {
 
     public boolean accountExistWithEmail(String email) {
         return findByEmail(email) != null;
+    }
+
+    public List<Account> findAllAdminAccounts() {
+        return accountRepository.findByRolesContains(Role.ADMIN);
     }
 
     @Transactional

@@ -29,7 +29,7 @@ public class JmsConfiguration {
         activeMQConnectionFactory.setUserName(username);
         activeMQConnectionFactory.setPassword(password);
         activeMQConnectionFactory.setTrustAllPackages(false);
-        activeMQConnectionFactory.setTrustedPackages(Arrays.asList("com.app.jmspoc.model", "com.app.jmspoc.dto", "java.lang"));
+        activeMQConnectionFactory.setTrustedPackages(Arrays.asList("com.app.jmspoc.model", "com.app.jmspoc.dto", "java.lang", "java.util"));
 
         cachingConnectionFactory.setTargetConnectionFactory(activeMQConnectionFactory);
 

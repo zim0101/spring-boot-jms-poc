@@ -8,6 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -28,13 +30,18 @@ public class JmsPOCApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// Create Admin User for the demo
-		Account account = new Account();
-		account.setFirstName("Mr.");
-		account.setLastName("Admin");
-		account.setUsername("admin1");
-		account.setEmail("admin1@gmail.com");
-		account.setPassword(passwordEncoder.encode("admin1"));
-		account.setRoles(Set.of(Role.ADMIN));
-		accountRepository.save(account);
+		List<Account> accounts = new ArrayList<>();
+
+		for (int i = 1; i <= 5; i++) {
+			Account account = new Account();
+			account.setFirstName("Mr.");
+			account.setLastName("Admin"+i);
+			account.setUsername("admin"+i);
+			account.setEmail("admin"+i+"@gmail.com");
+			account.setPassword(passwordEncoder.encode("admin"));
+			account.setRoles(Set.of(Role.ADMIN));
+			accounts.add(account);
+		}
+		accountRepository.saveAll(accounts);
 	}
 }

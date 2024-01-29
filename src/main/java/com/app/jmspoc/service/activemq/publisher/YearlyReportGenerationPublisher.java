@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class YearlyReportGenerationPublisher {
-    @Value("${jmspoc.queue.monthly-sales-report-generation}")
+    @Value("${jmspoc.queue.yearly-sales-report-generation}")
     private String destination;
 
     private final JmsTemplate jmsTemplate;

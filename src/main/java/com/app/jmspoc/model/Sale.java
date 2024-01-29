@@ -3,8 +3,6 @@ package com.app.jmspoc.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,12 +20,11 @@ public class Sale implements Serializable {
     private Integer quantity;
 
     @NotNull
-    @NotBlank
-    private String price;
+    private Double price;
 
     private Date createdAt;
 
-    public Sale(Integer id, Product product, Integer quantity, String price, Date createdAt) {
+    public Sale(Integer id, Product product, Integer quantity, Double price, Date createdAt) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
@@ -61,11 +58,11 @@ public class Sale implements Serializable {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

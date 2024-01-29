@@ -1,8 +1,10 @@
 package com.app.jmspoc.dto;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
-public class EmailDto {
+public class EmailDto implements Serializable {
     private String mailFrom;
 
     private String displayName;
@@ -20,6 +22,10 @@ public class EmailDto {
     private String contentType;
 
     private List<Object> attachments;
+
+    private List<String> fileNames;
+
+    private ByteArrayOutputStream pdfBytes;
 
     public String getMailFrom() {
         return mailFrom;
@@ -91,5 +97,21 @@ public class EmailDto {
 
     public void setAttachments(List<Object> attachments) {
         this.attachments = attachments;
+    }
+
+    public List<String> getFileNames() {
+        return fileNames;
+    }
+
+    public void setFileNames(List<String> fileNames) {
+        this.fileNames = fileNames;
+    }
+
+    public ByteArrayOutputStream getPdfBytes() {
+        return pdfBytes;
+    }
+
+    public void setPdfBytes(ByteArrayOutputStream pdfBytes) {
+        this.pdfBytes = pdfBytes;
     }
 }

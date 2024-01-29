@@ -31,7 +31,7 @@ public class DataInitializer implements CommandLineRunner {
         for (int i = 1; i <= 10; i++) {
             Product product = new Product();
             product.setName("Product" + i);
-            product.setPrice(String.valueOf(generateRandomPrice()));
+            product.setPrice(generateRandomPrice());
             products.add(product);
         }
 

@@ -1,5 +1,6 @@
 package com.app.jmspoc.service.activemq.publisher;
 
+import com.app.jmspoc.dto.EmailDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class EmailReportPublisher {
         this.jmsTemplate = jmsTemplate;
     }
 
-    public void publishMessage() {
-        jmsTemplate.convertAndSend(destination, "");
+    public void publishMessage(EmailDto emailDto) {
+        jmsTemplate.convertAndSend(destination, emailDto);
     }
 }

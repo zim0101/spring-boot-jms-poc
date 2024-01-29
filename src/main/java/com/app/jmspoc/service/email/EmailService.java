@@ -4,6 +4,7 @@ import com.app.jmspoc.dto.EmailDto;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.util.ByteArrayDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +14,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 @Service
 public class EmailService {
@@ -47,16 +50,19 @@ public class EmailService {
         }
     }
 
-    public void sendEmailMime(EmailDto email) throws MessagingException, UnsupportedEncodingException {
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
-
-        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
-
-        mimeMessageHelper.setSubject(email.getMailSubject());
-        mimeMessageHelper.setFrom(new InternetAddress(email.getMailFrom(), email.getDisplayName()));
-        mimeMessageHelper.setTo(email.getMailTo());
-        mimeMessageHelper.setText(email.getMailContent());
-
-        mailSender.send(mimeMessageHelper.getMimeMessage());
+    public void sendPdfEmail(EmailDto emailDto) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(emailDto.getMailTo());
+            helper.setSubject(emailDto.getMailSubject());
+            helper.setText(emailDto.getMailContent());
+            for (String fileName: emailDto.getFileNames()) {
+                helper.addAttachment(fileName, new ByteArrayDataSource(emailDto.getPdfBytes().toByteArray(), "application/pdf"));
+            }
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            log.info(e.getLocalizedMessage());
+        }
     }
 }

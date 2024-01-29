@@ -15,4 +15,6 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     Optional<Account> findByUsername(String username);
 
     Account findByEmail(String email);
+
+    List<Account> findByRolesContains(Role role);
 }
