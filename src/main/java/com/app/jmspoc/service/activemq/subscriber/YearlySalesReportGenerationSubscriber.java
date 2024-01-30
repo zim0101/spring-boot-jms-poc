@@ -19,6 +19,6 @@ public class YearlySalesReportGenerationSubscriber {
     @JmsListener(destination = "${jmspoc.queue.yearly-sales-report-generation}")
     public void subscribeMessage() {
         log.info("YearlySalesReportGenerationSubscriber received");
-        reportGenerationService.generateYearlyReport();
+        reportGenerationService.generateAndSendYearlyReport();
     }
 }

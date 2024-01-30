@@ -3,24 +3,27 @@ package com.app.jmspoc;
 import com.app.jmspoc.model.Account;
 import com.app.jmspoc.model.enums.Role;
 import com.app.jmspoc.repository.AccountRepository;
+import com.app.jmspoc.service.business.PDFGenerationService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootApplication
 public class JmsPOCApplication implements CommandLineRunner{
 
 	private final AccountRepository accountRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final PDFGenerationService pdfGenerationService;
 
-    public JmsPOCApplication(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+    public JmsPOCApplication(AccountRepository accountRepository,
+							 PasswordEncoder passwordEncoder,
+							 PDFGenerationService pdfGenerationService) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
+        this.pdfGenerationService = pdfGenerationService;
     }
 
     public static void main(String[] args) {

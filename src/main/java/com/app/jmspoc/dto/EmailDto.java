@@ -25,8 +25,6 @@ public class EmailDto implements Serializable {
 
     private List<String> fileNames;
 
-    private ByteArrayOutputStream pdfBytes;
-
     public String getMailFrom() {
         return mailFrom;
     }
@@ -105,13 +103,5 @@ public class EmailDto implements Serializable {
 
     public void setFileNames(List<String> fileNames) {
         this.fileNames = fileNames;
-    }
-
-    public ByteArrayOutputStream getPdfBytes() {
-        return pdfBytes;
-    }
-
-    public void setPdfBytes(ByteArrayOutputStream pdfBytes) {
-        this.pdfBytes = pdfBytes;
     }
 }

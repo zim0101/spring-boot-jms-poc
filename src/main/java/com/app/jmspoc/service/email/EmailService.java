@@ -4,7 +4,6 @@ import com.app.jmspoc.dto.EmailDto;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import jakarta.mail.util.ByteArrayDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +12,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
-import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 @Service
 public class EmailService {
@@ -58,7 +55,8 @@ public class EmailService {
             helper.setSubject(emailDto.getMailSubject());
             helper.setText(emailDto.getMailContent());
             for (String fileName: emailDto.getFileNames()) {
-                helper.addAttachment(fileName, new ByteArrayDataSource(emailDto.getPdfBytes().toByteArray(), "application/pdf"));
+                File file = new File(fileName);
+                helper.addAttachment("report.pdf", file);
             }
             mailSender.send(message);
         } catch (MessagingException e) {
